@@ -1,10 +1,8 @@
 import React from "react";
-import { useEffect } from "react";
-import { useApi } from "../utils/hooks/useApi";
-import { useAuthentication } from "../utils/hooks/useAuthentication";
 import "bulma/css/bulma.min.css";
 import "bulma-timeline/dist/css/bulma-timeline.min.css";
 import { SimpleTimeline } from "../components/timeline/simpleTimeline";
+import { BottomTabBar } from "../components/bottomTabBar/bottomTabBar";
 
 const IndexPage = (): JSX.Element => {
 	return (
@@ -13,6 +11,7 @@ const IndexPage = (): JSX.Element => {
 				<p>Odoo frontend</p>
 			</div>
 			<SimpleTimeline />
+			<BottomTabBar activeIndex={0} />
 		</main>
 	);
 };

@@ -1,10 +1,23 @@
 import React from "react";
+import { SimpleTimelineNode } from "./simpleTimelineNode";
+
+const dummyList = [
+	{ dateTime: "July 2022", title: "test node", content: "content text" },
+	{ dateTime: "July 2022", title: "test node", content: "content text" },
+	{ dateTime: "July 2022", title: "test node", content: "content text" },
+	{ dateTime: "July 2022", title: "test node", content: "content text" },
+	{ dateTime: "July 2022", title: "test node", content: "content text" },
+	{ dateTime: "July 2022", title: "test node", content: "content text" },
+	{ dateTime: "July 2022", title: "test node", content: "content text" },
+	{ dateTime: "July 2022", title: "test node", content: "content text" },
+	{ dateTime: "July 2022", title: "test node", content: "content text" },
+];
 
 export const SimpleTimeline = (): JSX.Element => {
 	return (
 		<>
 			<div className="timeline">
-				<header className="timeline-header">
+				{/* <header className="timeline-header">
 					<span className="tag is-medium is-primary">Start</span>
 				</header>
 				<div className="timeline-item">
@@ -37,7 +50,16 @@ export const SimpleTimeline = (): JSX.Element => {
 				</div>
 				<div className="timeline-header">
 					<span className="tag is-medium is-primary">End</span>
-				</div>
+				</div> */}
+
+				{dummyList.map((item, index) => (
+					<SimpleTimelineNode
+						key={index}
+						dateTime={item.dateTime}
+						title={`${item.title} ${index}`}
+						content={`${item.content} ${index}`}
+					/>
+				))}
 			</div>
 		</>
 	);

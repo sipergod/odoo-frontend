@@ -19,7 +19,7 @@ export const BottomTabBarItem = ({
 		<>
 			<div
 				className={classNames(
-					"column has-text-centered",
+					"column has-text-centered p-1",
 					styles.bottomTabBarItem,
 					{ [styles.active]: isActive }
 				)}

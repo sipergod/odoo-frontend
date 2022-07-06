@@ -11,20 +11,21 @@ type barPropsType = {
 	activeIndex: number;
 };
 
-const defaultIconSize = 25;
+const defaultIconSize = 20;
 
 export const BottomTabBar = ({
 	activeIndex = 0,
 }: barPropsType): JSX.Element => {
 	return (
 		<>
+			<div className={styles.spacer}></div>
 			<div
 				className={classNames(
 					"box has-background-light p-0",
 					styles.bottomTabBar
 				)}
 			>
-				<div className={classNames("columns m-0")}>
+				<div className={classNames("columns is-mobile m-0")}>
 					<BottomTabBarItem
 						isActive={activeIndex === 0}
 						icon={<MdGroups size={defaultIconSize} />}

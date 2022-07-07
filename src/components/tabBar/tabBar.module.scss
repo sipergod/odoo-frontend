@@ -4,4 +4,13 @@
 	top: 3.25rem;
 	left: 0;
 	width: 100vw;
+
+	.colorPrimary {
+		&.isActive {
+			a {
+				border-bottom-color: #00d1b2;
+				color: #00d1b2;
+			}
+		}
+	}
 }

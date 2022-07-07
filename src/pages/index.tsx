@@ -7,7 +7,8 @@ const IndexPage = (): JSX.Element => {
 		<>
 			<main>
 				<Layout
-					hasTabBar
+					searchPlaceHolder={`clients & phonebook...`}
+					listTabBar={["All clients", "Team", "Groups"]}
 					hasFloatingButton
 					hasBottomTabBar
 					bottomTabBarIndex={0}

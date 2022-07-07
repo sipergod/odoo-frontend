@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AppBar } from "../appBar/appBar";
 import { BottomTabBar } from "../bottomTabBar/bottomTabBar";
 import { FloatButton } from "../floatButton/floatButton";
 import { TabBar } from "../tabBar/tabBar";
 import "bulma/css/bulma.min.css";
 import "bulma-timeline/dist/css/bulma-timeline.min.css";
+import { useAppState, useAppStateDispatch } from "../appContext/AppContext";
 
 type layoutProps = {
 	appBarTitle?: string;
-	hasTabBar?: boolean;
+	searchPlaceHolder?: string;
+	searchPlaceHolderByTab?: boolean;
+	listTabBar: string[];
+	activeTabIndex?: number;
 	hasFloatingButton?: boolean;
 	hasBottomTabBar?: boolean;
 	bottomTabBarIndex: number;
@@ -17,30 +21,53 @@ type layoutProps = {
 
 export const Layout = ({
 	appBarTitle = "",
-	hasTabBar = false,
+	searchPlaceHolder = "",
+	searchPlaceHolderByTab = false,
+	listTabBar,
+	activeTabIndex = 0,
 	hasFloatingButton = false,
 	hasBottomTabBar = false,
 	bottomTabBarIndex,
 	children,
 }: layoutProps): JSX.Element => {
+	const appState = useAppState();
+	const appStateDispatch = useAppStateDispatch();
+
+	useEffect(() => {
+		if (!listTabBar || listTabBar.length === 0) {
+			appStateDispatch({
+				type: "setTabActive",
+			});
+		}
+	}, [listTabBar, appStateDispatch]);
+
 	return (
 		<>
 			<AppBar
 				onlySearchBar={appBarTitle === undefined || appBarTitle === ""}
+				searchPlaceHolderByTab={searchPlaceHolderByTab}
+				searchPlaceHolder={
+					searchPlaceHolderByTab ? undefined : searchPlaceHolder
+				}
 				title={appBarTitle}
 			/>
-			{hasTabBar ? <TabBar /> : <></>}
+			{listTabBar && listTabBar.length > 0 ? (
+				<TabBar listTab={listTabBar} activeTabIndex={activeTabIndex} />
+			) : (
+				<></>
+			)}
 			<div
 				className="has-background-light"
 				style={{
-					marginTop: hasTabBar
-						? "calc(5.75rem + 1px)"
-						: appBarTitle === undefined || appBarTitle === ""
-						? "4rem"
-						: "3.25rem",
+					marginTop:
+						listTabBar && listTabBar.length > 0
+							? "calc(5.75rem + 1px)"
+							: appBarTitle === undefined || appBarTitle === ""
+							? "4rem"
+							: "3.25rem",
 					marginBottom: hasBottomTabBar ? "4rem" : "0",
 					minHeight: `calc(100vh - ${
-						hasTabBar
+						listTabBar && listTabBar.length > 0
 							? "calc(5.75rem + 1px)"
 							: appBarTitle === undefined || appBarTitle === ""
 							? "4rem"

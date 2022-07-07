@@ -6,7 +6,8 @@ const ContentPage = (): JSX.Element => {
 		<>
 			<main>
 				<Layout
-					hasTabBar
+					searchPlaceHolderByTab
+					listTabBar={["Messages", "Files", "Pages"]}
 					hasFloatingButton
 					hasBottomTabBar
 					bottomTabBarIndex={1}

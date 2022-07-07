@@ -1,18 +1,24 @@
 import classNames from "classnames";
 import React, { useRef } from "react";
 import { FaSearch } from "react-icons/fa";
+import { useAppState } from "../appContext/AppContext";
 
 import * as styles from "./appBar.module.scss";
 
 type appBarProps = {
 	onlySearchBar?: boolean;
+	searchPlaceHolderByTab?: boolean;
+	searchPlaceHolder?: string;
 	title: string;
 };
 
 export const AppBar = ({
 	onlySearchBar = true,
+	searchPlaceHolderByTab = false,
+	searchPlaceHolder = "",
 	title,
 }: appBarProps): JSX.Element => {
+	const appState = useAppState();
 	const searchRef = useRef<HTMLInputElement>(null);
 
 	return (
@@ -51,7 +57,14 @@ export const AppBar = ({
 								<input
 									className="input"
 									type="text"
-									placeholder="Search"
+									placeholder={`Search ${
+										searchPlaceHolderByTab
+											? `${
+													appState.activeTab ||
+													searchPlaceHolder
+											  }...`
+											: searchPlaceHolder
+									}`}
 									ref={searchRef}
 								/>
 								<span className="icon is-small is-left">
@@ -60,7 +73,7 @@ export const AppBar = ({
 							</div>
 						) : (
 							<>
-								<h1>{title}</h1>
+								<h1 className={styles.title}>{title}</h1>
 							</>
 						)}
 					</div>

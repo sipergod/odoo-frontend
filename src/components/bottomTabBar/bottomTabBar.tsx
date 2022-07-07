@@ -22,12 +22,7 @@ export const BottomTabBar = ({
 	return (
 		<>
 			<div className={styles.spacer}></div>
-			<div
-				className={classNames(
-					"box has-background-light p-0",
-					styles.bottomTabBar
-				)}
-			>
+			<div className={classNames("box p-0", styles.bottomTabBar)}>
 				<div
 					className={classNames("columns m-0", {
 						["is-mobile"]: width < 768,

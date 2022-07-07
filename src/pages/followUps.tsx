@@ -6,7 +6,7 @@ const FollowUpsPage = (): JSX.Element => {
 		<>
 			<main>
 				<Layout
-					hasTabBar
+					appBarTitle="Follow-Ups"
 					hasFloatingButton
 					hasBottomTabBar
 					bottomTabBarIndex={2}

@@ -7,6 +7,7 @@ import "bulma/css/bulma.min.css";
 import "bulma-timeline/dist/css/bulma-timeline.min.css";
 
 type layoutProps = {
+	appBarTitle?: string;
 	hasTabBar?: boolean;
 	hasFloatingButton?: boolean;
 	hasBottomTabBar?: boolean;
@@ -15,6 +16,7 @@ type layoutProps = {
 };
 
 export const Layout = ({
+	appBarTitle = "",
 	hasTabBar = false,
 	hasFloatingButton = false,
 	hasBottomTabBar = false,
@@ -23,12 +25,27 @@ export const Layout = ({
 }: layoutProps): JSX.Element => {
 	return (
 		<>
-			<AppBar />
+			<AppBar
+				onlySearchBar={appBarTitle === undefined || appBarTitle === ""}
+				title={appBarTitle}
+			/>
 			{hasTabBar ? <TabBar /> : <></>}
 			<div
+				className="has-background-light"
 				style={{
-					marginTop: hasTabBar ? "6rem" : "4.25rem",
-					marginBottom: hasBottomTabBar ? "4.25rem" : "0",
+					marginTop: hasTabBar
+						? "calc(5.75rem + 1px)"
+						: appBarTitle === undefined || appBarTitle === ""
+						? "4rem"
+						: "3.25rem",
+					marginBottom: hasBottomTabBar ? "4rem" : "0",
+					minHeight: `calc(100vh - ${
+						hasTabBar
+							? "calc(5.75rem + 1px)"
+							: appBarTitle === undefined || appBarTitle === ""
+							? "4rem"
+							: "3.25rem"
+					} - ${hasBottomTabBar ? "4rem" : "0"})`,
 				}}
 			>
 				{children}

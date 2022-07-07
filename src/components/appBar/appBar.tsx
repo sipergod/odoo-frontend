@@ -4,7 +4,15 @@ import { FaSearch } from "react-icons/fa";
 
 import * as styles from "./appBar.module.scss";
 
-export const AppBar = (): JSX.Element => {
+type appBarProps = {
+	onlySearchBar?: boolean;
+	title: string;
+};
+
+export const AppBar = ({
+	onlySearchBar = true,
+	title,
+}: appBarProps): JSX.Element => {
 	const searchRef = useRef<HTMLInputElement>(null);
 
 	return (
@@ -37,18 +45,24 @@ export const AppBar = (): JSX.Element => {
 				</div> */}
 
 				<div className={classNames("navbar-start", styles.navbarStart)}>
-					<div className="column">
-						<div className="control is-expanded has-icons-left">
-							<input
-								className="input"
-								type="text"
-								placeholder="Search"
-								ref={searchRef}
-							/>
-							<span className="icon is-small is-left">
-								<FaSearch />
-							</span>
-						</div>
+					<div className="column has-text-centered">
+						{onlySearchBar ? (
+							<div className="control is-expanded has-icons-left">
+								<input
+									className="input"
+									type="text"
+									placeholder="Search"
+									ref={searchRef}
+								/>
+								<span className="icon is-small is-left">
+									<FaSearch />
+								</span>
+							</div>
+						) : (
+							<>
+								<h1>{title}</h1>
+							</>
+						)}
 					</div>
 				</div>
 

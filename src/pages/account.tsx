@@ -1,5 +1,6 @@
 import React from "react";
 import { Layout } from "../components/layout/layout";
+import { SimpleTimeline } from "../components/timeline/simpleTimeline";
 
 const AccountPage = (): JSX.Element => {
 	return (
@@ -13,6 +14,7 @@ const AccountPage = (): JSX.Element => {
 					<div className="column">
 						<p>Account page</p>
 					</div>
+					<SimpleTimeline />
 				</Layout>
 			</main>
 		</>

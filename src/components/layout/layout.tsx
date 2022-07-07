@@ -11,7 +11,7 @@ type layoutProps = {
 	appBarTitle?: string;
 	searchPlaceHolder?: string;
 	searchPlaceHolderByTab?: boolean;
-	listTabBar: string[];
+	listTabBar?: string[];
 	activeTabIndex?: number;
 	hasFloatingButton?: boolean;
 	hasBottomTabBar?: boolean;

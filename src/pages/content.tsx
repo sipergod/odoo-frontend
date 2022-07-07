@@ -1,7 +1,9 @@
 import React from "react";
 import { useAppState } from "../components/appContext/AppContext";
 import { Layout } from "../components/layout/layout";
-import { SimpleTimeline } from "../components/timeline/simpleTimeline";
+import { ListFiles } from "../components/listFiles/listFiles";
+import { ListMessages } from "../components/listMessages/listMessages";
+import { ListPages } from "../components/listPages/listPages";
 
 const ListTabBar = ["Messages", "Files", "Pages"];
 
@@ -22,17 +24,21 @@ const ContentPage = (): JSX.Element => {
 						<p>Content page</p>
 
 						{appState.activeTab === ListTabBar[0].toLowerCase() && (
-							<div className="block"></div>
+							<div className="block">
+								<ListMessages />
+							</div>
 						)}
 
 						{appState.activeTab === ListTabBar[1].toLowerCase() && (
 							<div className="block">
-								<SimpleTimeline />
+								<ListFiles />
 							</div>
 						)}
 
 						{appState.activeTab === ListTabBar[2].toLowerCase() && (
-							<div className="block"></div>
+							<div className="block">
+								<ListPages />
+							</div>
 						)}
 					</div>
 				</Layout>

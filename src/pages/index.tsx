@@ -7,8 +7,9 @@ const IndexPage = (): JSX.Element => {
 		<>
 			<main>
 				<Layout
-					hasTabBar={true}
-					hasBottomTabBar={true}
+					hasTabBar
+					hasFloatingButton
+					hasBottomTabBar
 					bottomTabBarIndex={0}
 				>
 					<div className="column">

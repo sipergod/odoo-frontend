@@ -5,10 +5,7 @@ const AccountPage = (): JSX.Element => {
 	return (
 		<>
 			<main>
-				<Layout
-					hasBottomTabBar={true}
-					bottomTabBarIndex={3}
-				>
+				<Layout hasBottomTabBar bottomTabBarIndex={3}>
 					<div className="column">
 						<p>Account page</p>
 					</div>

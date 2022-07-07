@@ -6,8 +6,9 @@ const FollowUpsPage = (): JSX.Element => {
 		<>
 			<main>
 				<Layout
-					hasTabBar={true}
-					hasBottomTabBar={true}
+					hasTabBar
+					hasFloatingButton
+					hasBottomTabBar
 					bottomTabBarIndex={2}
 				>
 					<div className="column">

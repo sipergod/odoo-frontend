@@ -8,6 +8,7 @@ import "bulma-timeline/dist/css/bulma-timeline.min.css";
 
 type layoutProps = {
 	hasTabBar?: boolean;
+	hasFloatingButton?: boolean;
 	hasBottomTabBar?: boolean;
 	bottomTabBarIndex: number;
 	children: React.ReactNode;
@@ -15,6 +16,7 @@ type layoutProps = {
 
 export const Layout = ({
 	hasTabBar = false,
+	hasFloatingButton = false,
 	hasBottomTabBar = false,
 	bottomTabBarIndex,
 	children,
@@ -31,7 +33,7 @@ export const Layout = ({
 			>
 				{children}
 			</div>
-			<FloatButton />
+			{hasFloatingButton ? <FloatButton /> : <></>}
 			{hasBottomTabBar ? (
 				<BottomTabBar activeIndex={bottomTabBarIndex} />
 			) : (

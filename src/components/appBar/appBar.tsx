@@ -1,6 +1,8 @@
+import classNames from "classnames";
 import React, { useRef } from "react";
 import { FaSearch } from "react-icons/fa";
-import { TabBar } from "../tabBar/tabBar";
+
+import * as styles from "./appBar.module.scss";
 
 export const AppBar = (): JSX.Element => {
 	const searchRef = useRef<HTMLInputElement>(null);
@@ -8,7 +10,7 @@ export const AppBar = (): JSX.Element => {
 	return (
 		<>
 			<nav
-				className="navbar is-fixed-top"
+				className={classNames("navbar is-fixed-top", styles.navbar)}
 				role="navigation"
 				aria-label="main navigation"
 			>
@@ -34,9 +36,9 @@ export const AppBar = (): JSX.Element => {
 					</a>
 				</div> */}
 
-				<div className="navbar-start">
+				<div className={classNames("navbar-start", styles.navbarStart)}>
 					<div className="column">
-						<div className="control has-icons-left">
+						<div className="control is-expanded has-icons-left">
 							<input
 								className="input"
 								type="text"

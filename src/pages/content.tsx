@@ -6,8 +6,9 @@ const ContentPage = (): JSX.Element => {
 		<>
 			<main>
 				<Layout
-					hasTabBar={true}
-					hasBottomTabBar={true}
+					hasTabBar
+					hasFloatingButton
+					hasBottomTabBar
 					bottomTabBarIndex={1}
 				>
 					<div className="column">

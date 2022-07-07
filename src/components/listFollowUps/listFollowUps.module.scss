@@ -1,0 +1,19 @@
+.introIcon {
+	color: #00d1b2;
+}
+
+.title {
+	font-weight: bold;
+}
+
+.verticalButton {
+	background: white;
+
+	&:hover {
+		background: #ebfffc;
+	}
+
+	span {
+		font-weight: bold;
+	}
+}

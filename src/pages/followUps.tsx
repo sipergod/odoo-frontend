@@ -1,5 +1,6 @@
 import React from "react";
 import { Layout } from "../components/layout/layout";
+import { ListFollowUps } from "../components/listFollowUps/listFollowUps";
 
 const FollowUpsPage = (): JSX.Element => {
 	return (
@@ -7,13 +8,13 @@ const FollowUpsPage = (): JSX.Element => {
 			<main>
 				<Layout
 					appBarTitle="Follow-Ups"
-					hasFloatingButton
 					hasBottomTabBar
 					bottomTabBarIndex={2}
 				>
 					<div className="column">
 						<p>Follow - Ups page</p>
 					</div>
+					<ListFollowUps />
 				</Layout>
 			</main>
 		</>

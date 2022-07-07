@@ -3,21 +3,40 @@ import { AppBar } from "../appBar/appBar";
 import { BottomTabBar } from "../bottomTabBar/bottomTabBar";
 import { FloatButton } from "../floatButton/floatButton";
 import { TabBar } from "../tabBar/tabBar";
+import "bulma/css/bulma.min.css";
+import "bulma-timeline/dist/css/bulma-timeline.min.css";
 
 type layoutProps = {
+	hasTabBar?: boolean;
+	hasBottomTabBar?: boolean;
+	bottomTabBarIndex: number;
 	children: React.ReactNode;
 };
 
-export const Layout = ({ children }: layoutProps): JSX.Element => {
+export const Layout = ({
+	hasTabBar = false,
+	hasBottomTabBar = false,
+	bottomTabBarIndex,
+	children,
+}: layoutProps): JSX.Element => {
 	return (
 		<>
 			<AppBar />
-			<TabBar />
-			<div style={{ marginTop: "6rem", marginBottom: "4.25rem" }}>
+			{hasTabBar ? <TabBar /> : <></>}
+			<div
+				style={{
+					marginTop: hasTabBar ? "6rem" : "4.25rem",
+					marginBottom: hasBottomTabBar ? "4.25rem" : "0",
+				}}
+			>
 				{children}
 			</div>
 			<FloatButton />
-			<BottomTabBar activeIndex={0} />
+			{hasBottomTabBar ? (
+				<BottomTabBar activeIndex={bottomTabBarIndex} />
+			) : (
+				<></>
+			)}
 		</>
 	);
 };

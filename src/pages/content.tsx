@@ -1,24 +1,22 @@
 import React from "react";
-import { SimpleTimeline } from "../components/timeline/simpleTimeline";
 import { Layout } from "../components/layout/layout";
 
-const IndexPage = (): JSX.Element => {
+const ContentPage = (): JSX.Element => {
 	return (
 		<>
 			<main>
 				<Layout
 					hasTabBar={true}
 					hasBottomTabBar={true}
-					bottomTabBarIndex={0}
+					bottomTabBarIndex={1}
 				>
 					<div className="column">
-						<p>Odoo frontend</p>
+						<p>Content page</p>
 					</div>
-					<SimpleTimeline />
 				</Layout>
 			</main>
 		</>
 	);
 };
 
-export default IndexPage;
+export default ContentPage;

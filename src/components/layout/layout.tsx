@@ -5,6 +5,7 @@ import { FloatButton } from "../floatButton/floatButton";
 import { TabBar } from "../tabBar/tabBar";
 import "bulma/css/bulma.min.css";
 import "bulma-timeline/dist/css/bulma-timeline.min.css";
+import "./main.css";
 import { useAppState, useAppStateDispatch } from "../appContext/AppContext";
 
 type layoutProps = {

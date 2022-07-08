@@ -107,20 +107,32 @@ export const ListFollowUps = (): JSX.Element => {
 
 			<div
 				className={classNames(
-					"column has-text-link my-1",
+					"column has-text-link mt-1",
 					styles.verticalButton
 				)}
 			>
-				<span className="icon-text">
-					<span className="icon">
-						<BiCalendarStar size={18} />
-					</span>
-					<span className="ml-2">TODAY</span>
-				</span>
+				<div className="columns is-mobile">
+					<div className="column">
+						<span className="icon-text">
+							<span className="icon">
+								<BiCalendarStar size={18} />
+							</span>
+							<span className="ml-2">TODAY</span>
+						</span>
+					</div>
+					<div className="column has-text-right">
+						<span className="icon-text">
+							<span className="mr-2">0</span>
+							<span className="icon">
+								<MdKeyboardArrowRight size={18} />
+							</span>
+						</span>
+					</div>
+				</div>
 			</div>
 
 			{emptyDummyList && emptyDummyList.length === 0 && (
-				<div className="column is-6 is-offset-3 has-text-centered">
+				<div className="column is-6 is-offset-3 has-text-centered has-background-white">
 					<div className="block mb-1">
 						<BiCalendarAlt className={styles.introIcon} size={50} />
 

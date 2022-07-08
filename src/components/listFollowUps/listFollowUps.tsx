@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { navigate } from "gatsby";
 import React from "react";
 import {
 	BiCalendarStar,
@@ -21,6 +22,9 @@ export const ListFollowUps = (): JSX.Element => {
 					"column my-1 has-text-danger",
 					styles.verticalButton
 				)}
+				onClick={() => {
+					navigate(`/followUps/overdue/`);
+				}}
 			>
 				<span className="icon-text">
 					<span className="icon">
@@ -35,6 +39,9 @@ export const ListFollowUps = (): JSX.Element => {
 					"column has-text-black my-1",
 					styles.verticalButton
 				)}
+				onClick={() => {
+					navigate(`/followUps/upcoming/`);
+				}}
 			>
 				<span className="icon-text">
 					<span className="icon">
@@ -44,7 +51,12 @@ export const ListFollowUps = (): JSX.Element => {
 				</span>
 			</div>
 
-			<div className={classNames("column my-1", styles.verticalButton)}>
+			<div
+				className={classNames("column my-1", styles.verticalButton)}
+				onClick={() => {
+					navigate(`/followUps/someday/`);
+				}}
+			>
 				<span className="icon-text">
 					<span className="icon">
 						<BiCalendarAlt size={18} />

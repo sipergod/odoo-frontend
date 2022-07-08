@@ -8,21 +8,25 @@ import "bulma-timeline/dist/css/bulma-timeline.min.css";
 import { useAppState, useAppStateDispatch } from "../appContext/AppContext";
 
 type layoutProps = {
+	backButtonLink?: string;
 	appBarTitle?: string;
 	searchPlaceHolder?: string;
 	searchPlaceHolderByTab?: boolean;
+	optionButton?: boolean;
 	listTabBar?: string[];
 	activeTabIndex?: number;
 	hasFloatingButton?: boolean;
 	hasBottomTabBar?: boolean;
-	bottomTabBarIndex: number;
+	bottomTabBarIndex?: number;
 	children: React.ReactNode;
 };
 
 export const Layout = ({
+	backButtonLink,
 	appBarTitle = "",
 	searchPlaceHolder = "",
 	searchPlaceHolderByTab = false,
+	optionButton = false,
 	listTabBar,
 	activeTabIndex = 0,
 	hasFloatingButton = false,
@@ -50,7 +54,9 @@ export const Layout = ({
 	return (
 		<>
 			<AppBar
+				backButtonLink={backButtonLink}
 				onlySearchBar={appBarTitle === undefined || appBarTitle === ""}
+				optionButton={optionButton}
 				searchPlaceHolderByTab={searchPlaceHolderByTab}
 				searchPlaceHolder={
 					searchPlaceHolderByTab ? undefined : searchPlaceHolder
@@ -80,14 +86,14 @@ export const Layout = ({
 							: appBarTitle === undefined || appBarTitle === ""
 							? "4rem"
 							: "3.25rem"
-					} - ${hasBottomTabBar ? "4rem" : "0"})`,
+					} - ${hasBottomTabBar ? "4rem" : "0px"})`,
 				}}
 			>
 				{children}
 			</div>
 			{hasFloatingButton ? <FloatButton /> : <></>}
 			{hasBottomTabBar ? (
-				<BottomTabBar activeIndex={bottomTabBarIndex} />
+				<BottomTabBar activeIndex={bottomTabBarIndex || 0} />
 			) : (
 				<></>
 			)}

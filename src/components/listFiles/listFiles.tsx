@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { navigate } from "gatsby";
 import React from "react";
 import { FaFilePdf } from "react-icons/fa";
 import { ImAttachment } from "react-icons/im";
@@ -34,6 +35,9 @@ export const ListFiles = (): JSX.Element => {
 					<div
 						key={index}
 						className="column has-background-white my-1"
+						onClick={() => {
+							navigate(`/content/fileDetail/${index}`);
+						}}
 					>
 						<div className="columns is-mobile m-0">
 							<div

@@ -4,6 +4,7 @@ import { MdOutlineChat } from "react-icons/md";
 import { ImArrowDownRight2 } from "react-icons/im";
 
 import * as styles from "./listMessages.module.scss";
+import { navigate } from "gatsby";
 
 const dummyList: any[] = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 const emptyDummyList: any[] = [];
@@ -33,6 +34,9 @@ export const ListMessages = (): JSX.Element => {
 					<div
 						key={index}
 						className="column has-background-white my-1"
+						onClick={() => {
+							navigate(`/content/messageDetail/${index}`);
+						}}
 					>
 						<div className="columns is-mobile m-0">
 							<div className="column">
@@ -40,7 +44,12 @@ export const ListMessages = (): JSX.Element => {
 									Example {index} - Introduction - ACME
 									Residences
 								</p>
-								<p className={classNames("my-3", styles.hidable)}>
+								<p
+									className={classNames(
+										"my-3",
+										styles.hidable
+									)}
+								>
 									Hi @clientName, Thank you for your interest
 									in ACME Residences. I'll send over an
 									eBrochure shortly with more details on the

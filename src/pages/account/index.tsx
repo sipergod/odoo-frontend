@@ -1,6 +1,6 @@
 import React from "react";
-import { Layout } from "../components/layout/layout";
-import { SimpleTimeline } from "../components/timeline/simpleTimeline";
+import { Layout } from "../../components/layout/layout";
+import { SimpleTimeline } from "../../components/timeline/simpleTimeline";
 
 const AccountPage = (): JSX.Element => {
 	return (

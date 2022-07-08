@@ -1,9 +1,9 @@
 import React from "react";
-import { useAppState } from "../components/appContext/AppContext";
-import { Layout } from "../components/layout/layout";
-import { ListFiles } from "../components/listFiles/listFiles";
-import { ListMessages } from "../components/listMessages/listMessages";
-import { ListPages } from "../components/listPages/listPages";
+import { useAppState } from "../../components/appContext/AppContext";
+import { Layout } from "../../components/layout/layout";
+import { ListFiles } from "../../components/listFiles/listFiles";
+import { ListMessages } from "../../components/listMessages/listMessages";
+import { ListPages } from "../../components/listPages/listPages";
 
 const ListTabBar = ["Messages", "Files", "Pages"];
 

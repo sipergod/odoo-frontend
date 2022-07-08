@@ -7,6 +7,12 @@ export async function createPages(params) {
 export async function onPostBuild(params) {}
 
 export async function onCreatePage({ page, actions }) {
+	if (page.path.match(/^\/clients\/clientDetail/)) {
+		page.matchPath = "/clients/clientDetail/*";
+
+		actions.createPage(page);
+	}
+
 	if (page.path.match(/^\/content\/messageDetail/)) {
 		page.matchPath = "/content/messageDetail/*";
 

@@ -34,15 +34,16 @@ export const AppBar = ({
 				role="navigation"
 				aria-label="main navigation"
 			>
-				<div
-					className={classNames(
-						"navbar-start has-text-centered",
-						styles.navbarStart
-					)}
-				>
+				<div className={classNames("navbar-start", styles.navbarStart)}>
 					<div className="columns is-mobile m-0">
 						{backButtonLink && (
-							<div className="column is-narrow">
+							<div
+								className={classNames(
+									"column",
+									// { ["is-narrow"]: optionButton },
+									{ ["is-3"]: !optionButton }
+								)}
+							>
 								<Link to={backButtonLink}>
 									<button className="button is-white">
 										<MdArrowBackIosNew />
@@ -50,7 +51,7 @@ export const AppBar = ({
 								</Link>
 							</div>
 						)}
-						<div className="column">
+						<div className="column  has-text-centered">
 							{onlySearchBar ? (
 								<div className="control is-expanded has-icons-left">
 									<input
@@ -76,11 +77,20 @@ export const AppBar = ({
 								</>
 							)}
 						</div>
-						{optionButton && (
-							<div className="column is-narrow">
-								<button className="button is-white">
-									Options
-								</button>
+
+						{backButtonLink && (
+							<div
+								className={classNames(
+									"column has-text-right",
+									// { ["is-narrow"]: optionButton },
+									{ ["is-3"]: !optionButton }
+								)}
+							>
+								{optionButton && (
+									<button className="button is-white">
+										Options
+									</button>
+								)}
 							</div>
 						)}
 					</div>

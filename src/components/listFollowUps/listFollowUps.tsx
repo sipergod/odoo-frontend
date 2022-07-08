@@ -8,6 +8,7 @@ import {
 	BiCalendarAlt,
 } from "react-icons/bi";
 import { ImArrowDownRight2 } from "react-icons/im";
+import { MdKeyboardArrowRight } from "react-icons/md";
 
 import * as styles from "./listFollowUps.module.scss";
 
@@ -19,50 +20,89 @@ export const ListFollowUps = (): JSX.Element => {
 		<>
 			<div
 				className={classNames(
-					"column my-1 has-text-danger",
+					"column is-full my-1 has-text-danger",
 					styles.verticalButton
 				)}
 				onClick={() => {
 					navigate(`/followUps/overdue/`);
 				}}
 			>
-				<span className="icon-text">
-					<span className="icon">
-						<BiCalendarExclamation size={18} />
-					</span>
-					<span className="ml-2">OVERDUE</span>
-				</span>
+				<div className="columns is-mobile">
+					<div className="column">
+						<span className="icon-text">
+							<span className="icon">
+								<BiCalendarExclamation size={18} />
+							</span>
+							<span className="ml-2">OVERDUE</span>
+						</span>
+					</div>
+					<div className="column has-text-right">
+						<span className="icon-text">
+							<span className="mr-2">0</span>
+							<span className="icon">
+								<MdKeyboardArrowRight size={18} />
+							</span>
+						</span>
+					</div>
+				</div>
 			</div>
 
 			<div
 				className={classNames(
-					"column has-text-black my-1",
+					"column is-full has-text-black my-1",
 					styles.verticalButton
 				)}
 				onClick={() => {
 					navigate(`/followUps/upcoming/`);
 				}}
 			>
-				<span className="icon-text">
-					<span className="icon">
-						<BiCalendarEvent size={18} />
-					</span>
-					<span className="ml-2">UPCOMING</span>
-				</span>
+				<div className="columns is-mobile">
+					<div className="column">
+						<span className="icon-text">
+							<span className="icon">
+								<BiCalendarEvent size={18} />
+							</span>
+							<span className="ml-2">UPCOMING</span>
+						</span>
+					</div>
+					<div className="column has-text-right">
+						<span className="icon-text">
+							<span className="mr-2">0</span>
+							<span className="icon">
+								<MdKeyboardArrowRight size={18} />
+							</span>
+						</span>
+					</div>
+				</div>
 			</div>
 
 			<div
-				className={classNames("column my-1", styles.verticalButton)}
+				className={classNames(
+					"column is-full my-1",
+					styles.verticalButton
+				)}
 				onClick={() => {
 					navigate(`/followUps/someday/`);
 				}}
 			>
-				<span className="icon-text">
-					<span className="icon">
-						<BiCalendarAlt size={18} />
-					</span>
-					<span className="ml-2">SOMEDAY</span>
-				</span>
+				<div className="columns is-mobile">
+					<div className="column">
+						<span className="icon-text">
+							<span className="icon">
+								<BiCalendarAlt size={18} />
+							</span>
+							<span className="ml-2">SOMEDAY</span>
+						</span>
+					</div>
+					<div className="column has-text-right">
+						<span className="icon-text">
+							<span className="mr-2">0</span>
+							<span className="icon">
+								<MdKeyboardArrowRight size={18} />
+							</span>
+						</span>
+					</div>
+				</div>
 			</div>
 
 			<div

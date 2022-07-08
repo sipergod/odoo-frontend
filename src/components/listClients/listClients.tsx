@@ -4,6 +4,7 @@ import { MdOutlineGroups } from "react-icons/md";
 import { ImArrowDownRight2 } from "react-icons/im";
 
 import * as styles from "./listClients.module.scss";
+import { navigate } from "gatsby";
 
 const dummyList: any[] = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 const emptyDummyList: any[] = [];
@@ -37,6 +38,9 @@ export const ListClients = (): JSX.Element => {
 					<div
 						key={index}
 						className="column has-background-white my-1"
+						onClick={() => {
+							navigate(`/clients/clientDetail/${index}`);
+						}}
 					>
 						<div className="columns is-mobile m-0">
 							<div className="column is-3">

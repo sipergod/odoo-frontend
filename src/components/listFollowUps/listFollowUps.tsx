@@ -131,6 +131,7 @@ export const ListFollowUps = (): JSX.Element => {
 				</div>
 			</div>
 
+			<div className="column p-0 has-background-white">
 			{emptyDummyList && emptyDummyList.length === 0 && (
 				<div className="column is-6 is-offset-3 has-text-centered has-background-white">
 					<div className="block mb-1">
@@ -147,6 +148,7 @@ export const ListFollowUps = (): JSX.Element => {
 					</div>
 				</div>
 			)}
+			</div>
 
 			{dummyList &&
 				dummyList.length > 0 &&

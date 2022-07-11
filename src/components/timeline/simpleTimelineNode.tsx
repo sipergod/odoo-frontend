@@ -9,7 +9,7 @@ type contentPropsType = {
 export const SimpleTimelineNode = (props: contentPropsType): JSX.Element => {
 	return (
 		<>
-			<div className="timeline-item">
+			<div className="timeline-item" style={{overflow: "unset"}}>
 				<div className="timeline-marker is-image is-32x32">
 					<img src="https://bulma.io/images/placeholders/32x32.png" />
 				</div>

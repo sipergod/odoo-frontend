@@ -29,11 +29,11 @@ const ProfilePage = (): JSX.Element => {
 
   const handleSelectWhatsappPhoneCode = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
-      if (e.target.value && e.target.value !== phoneCode) {
+      if (e.target.value && e.target.value !== whatsappPhoneCode) {
         setWhatsappPhoneCode(e.target.value);
       }
     },
-    [phoneCode]
+    [whatsappPhoneCode]
   );
 
   return (

@@ -25,15 +25,21 @@ export const apiService = async (props: ApiPropsType) => {
         // redirect: "follow", // manual, *follow, error
         // referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
         headers: {
-          // "Content-type": "charset=UTF-8",
+          "Content-type": "charset=UTF-8",
           // Authorization: "Bearer s6G8iq3ioWGpea6BwATp84l1EnBeKYlq",
           Accept: "application/json",
         },
-        body: props.body ? JSON.parse(props.body) : null,
+        body: props.body,
       }
     );
-    const json = await apiResponse.json();
-    return json;
+
+    if (apiResponse.status === 200) {
+      console.log(apiResponse);
+      const json = await apiResponse.json();
+      return json;
+    } else {
+      return apiResponse;
+    }
   } catch (error) {
     console.log("hihihihi", error);
     return {

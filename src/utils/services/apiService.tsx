@@ -37,7 +37,7 @@ export const apiService = async (props: ApiPropsType) => {
       if (props.method === "post" && props.url !== "/post") {
         const json = await apiResponse.json();
         return json;
-      }else {
+      } else {
         const json = await apiResponse.text();
         return json;
       }
@@ -45,7 +45,6 @@ export const apiService = async (props: ApiPropsType) => {
       return apiResponse;
     }
   } catch (error) {
-    console.log("hihihihi", error);
     return {
       error: "",
       content: `${error}`,

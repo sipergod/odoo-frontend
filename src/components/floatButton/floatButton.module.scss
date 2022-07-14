@@ -1,10 +1,20 @@
 .floatButton {
-	z-index: 30;
-	position: fixed;
-	right: 0;
-	bottom: 4.25rem;
+  z-index: 30;
+  position: fixed;
+  right: 0;
+  bottom: 4.25rem;
 
-	button {
-		border-radius: 100%;
-	}
+  button {
+    border-radius: 100%;
+    transition: all 0.2s ease-in;
+
+    svg {
+      opacity: 1;
+    }
+  }
+}
+
+.isHidden {
+  opacity: 0 !important;
+  transform: translateY(2rem);
 }

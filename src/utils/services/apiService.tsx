@@ -27,7 +27,7 @@ export const apiService = async (props: ApiPropsType) => {
         headers: {
           "Content-type": "charset=UTF-8",
           // Authorization: "Bearer s6G8iq3ioWGpea6BwATp84l1EnBeKYlq",
-          Accept: "application/json",
+          // Accept: "application/json",
         },
         body: props.body,
       }

@@ -36,8 +36,8 @@ export const useApi = (props: ApiPropsType): ApiResponseType => {
 					// referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
 					headers: {
 						// "Content-type": "charset=UTF-8",
-						Authorization:
-							"Bearer s6G8iq3ioWGpea6BwATp84l1EnBeKYlq",
+						// Authorization:
+						// 	"Bearer s6G8iq3ioWGpea6BwATp84l1EnBeKYlq",
 					},
 					body: props.body ? JSON.parse(props.body) : null,
 				}

@@ -56,7 +56,7 @@ const TestAPIPage = (): JSX.Element => {
                 phone: "123456789",
                 mobile: "123456789",
                 email: "test@test.com",
-                image_1920: uploadStatus ? URL.createObjectURL(uploadStatus) : null,
+                // image_1920: uploadStatus ? URL.createObjectURL(uploadStatus) : null,
               },
             };
           } else {

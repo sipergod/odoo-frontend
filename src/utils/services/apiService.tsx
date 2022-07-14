@@ -16,7 +16,7 @@ export type ApiResponseType = {
 export const apiService = async (props: ApiPropsType) => {
   try {
     const apiResponse = await fetch(
-      `http://172.104.164.227:1234/api${props.url}`,
+      `https://odoo-restapi.herokuapp.com/api${props.url}`,
       {
         method: props.method ?? "get", // *GET, POST, PUT, DELETE, etc.
         // mode: "no-cors", // no-cors, *cors, same-origin

@@ -1,24 +1,51 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Layout } from "../../components/layout/layout";
 import { apiService } from "../../utils/services/apiService";
+import Resizer from "react-image-file-resizer";
 
 const TestAPIPage = (): JSX.Element => {
   const modelRef = useRef<HTMLInputElement>(null);
   const idRef = useRef<HTMLInputElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
+  const phoneRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
   const [uploadStatus, setUploadStatus] = useState<File>();
+  const [base64, setBase64] = useState<string | ArrayBuffer | null>();
 
   const [result, setResult] = useState<string>("");
 
   const [selected, setSelected] = useState<string>("get");
 
+  const resizeFileToBase64 = useCallback(
+    (file: File) =>
+      new Promise((resolve) => {
+        Resizer.imageFileResizer(
+          file,
+          250,
+          250,
+          "JPEG",
+          100,
+          0,
+          (uri) => {
+            resolve(uri);
+          },
+          "base64"
+        );
+      }),
+    []
+  );
+
   const handleUpload = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+    async (e: React.ChangeEvent<HTMLInputElement>) => {
       if (e.target.files && e.target.files.length > 0) {
         setUploadStatus(e.target.files[0]);
+
+        const image = await resizeFileToBase64(e.target.files[0]);
+        const data = image as string;
+        setBase64(data.replace("data:", "").replace(/^.+,/, ""));
       }
     },
-    [uploadStatus]
+    [uploadStatus, resizeFileToBase64]
   );
 
   const handleSelect = useCallback(
@@ -47,16 +74,39 @@ const TestAPIPage = (): JSX.Element => {
           if (nameRef && nameRef.current && nameRef.current.value !== "") {
             // call post create new
 
-            console.log(uploadStatus);
             url = "/post";
             body = {
               model: modelRef.current.value.trim(),
               data: {
                 name: nameRef.current.value.trim(),
-                phone: "123456789",
-                mobile: "123456789",
-                email: "test@test.com",
-                // image_1920: uploadStatus ? URL.createObjectURL(uploadStatus) : null,
+                phone:
+                  modelRef.current.value.trim().toLowerCase() ===
+                    "res.partner" &&
+                  phoneRef &&
+                  phoneRef.current
+                    ? phoneRef.current.value
+                    : null,
+                mobile:
+                  modelRef.current.value.trim().toLowerCase() ===
+                    "res.partner" &&
+                  phoneRef &&
+                  phoneRef.current
+                    ? phoneRef.current.value
+                    : null,
+                email:
+                  modelRef.current.value.trim().toLowerCase() ===
+                    "res.partner" &&
+                  emailRef &&
+                  emailRef.current
+                    ? emailRef.current.value
+                    : null,
+                image_1920:
+                  modelRef.current.value.trim().toLowerCase() ===
+                    "res.partner" &&
+                  uploadStatus &&
+                  base64
+                    ? base64
+                    : null,
               },
             };
           } else {
@@ -117,7 +167,7 @@ const TestAPIPage = (): JSX.Element => {
       setResult("Please provide ID");
       return;
     }
-  }, [selected, modelRef, idRef, nameRef]);
+  }, [selected, modelRef, idRef, nameRef, base64, uploadStatus]);
 
   return (
     <>
@@ -205,7 +255,43 @@ const TestAPIPage = (): JSX.Element => {
             <div className="column">
               <div className="columns m-0">
                 <div className="column is-3">
-                  <label className="label">Name</label>
+                  <label className="label">Phone number</label>
+                </div>
+                <div className="column">
+                  <div className="control">
+                    <input
+                      ref={phoneRef}
+                      className="input"
+                      type="text"
+                      placeholder="Phone number"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="column">
+              <div className="columns m-0">
+                <div className="column is-3">
+                  <label className="label">Email</label>
+                </div>
+                <div className="column">
+                  <div className="control">
+                    <input
+                      ref={emailRef}
+                      className="input"
+                      type="text"
+                      placeholder="Email"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="column">
+              <div className="columns m-0">
+                <div className="column is-3">
+                  <label className="label">Image</label>
                 </div>
                 <div className="column">
                   <div className="control">

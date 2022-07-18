@@ -21,8 +21,8 @@ const TestAPIPage = (): JSX.Element => {
       new Promise((resolve) => {
         Resizer.imageFileResizer(
           file,
-          250,
-          250,
+          275,
+          275,
           "JPEG",
           100,
           0,
@@ -138,6 +138,30 @@ const TestAPIPage = (): JSX.Element => {
             id: idRef.current.value.trim(),
             data: {
               name: nameRef.current.value.trim(),
+              phone:
+                modelRef.current.value.trim().toLowerCase() === "res.partner" &&
+                phoneRef &&
+                phoneRef.current
+                  ? phoneRef.current.value
+                  : null,
+              mobile:
+                modelRef.current.value.trim().toLowerCase() === "res.partner" &&
+                phoneRef &&
+                phoneRef.current
+                  ? phoneRef.current.value
+                  : null,
+              email:
+                modelRef.current.value.trim().toLowerCase() === "res.partner" &&
+                emailRef &&
+                emailRef.current
+                  ? emailRef.current.value
+                  : null,
+              image_1920:
+                modelRef.current.value.trim().toLowerCase() === "res.partner" &&
+                uploadStatus &&
+                base64
+                  ? base64
+                  : null,
             },
           };
           method = "put";
@@ -153,6 +177,21 @@ const TestAPIPage = (): JSX.Element => {
             setResult("Please provide ID");
             return;
           }
+        } else if (selected === "getAllFields") {
+          url = "/getallfields";
+          body = {
+            model: modelRef.current.value.trim(),
+          };
+        } else if (selected === "getIndividuals") {
+          url = "/getindividuals";
+          body = {
+            model: modelRef.current.value.trim(),
+          };
+        } else if (selected === "getCompanies") {
+          url = "/getcompanies";
+          body = {
+            model: modelRef.current.value.trim(),
+          };
         }
       }
 
@@ -191,6 +230,9 @@ const TestAPIPage = (): JSX.Element => {
                         <option value="post">Post</option>
                         <option value="put">Put</option>
                         <option value="delete">Delete</option>
+                        <option value="getAllFields">Get All Fields</option>
+                        <option value="getIndividuals">Get Individuals</option>
+                        <option value="getCompanies">Get Companies</option>
                       </select>
                     </div>
                   </div>
